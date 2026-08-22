@@ -13,8 +13,7 @@ CPU/RAM come from `sysinfo`, GPU metrics come from a small per-vendor layer
 directly to a bitmap with `ab_glyph`.
 
 ## Screenshot
-
-<!-- Drop a screenshot of the open menu here, e.g. ![screenshot](docs/menu.png) -->
+![screenshot](images/menu.png)
 
 ## Features
 
