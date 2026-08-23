@@ -8,7 +8,7 @@ edition = "2021"
 ksni = { version = "0.3", features = ["blocking"] }
 
 # CPU temperature & ram usage
-sysinfo = "0.33"
+sysinfo = { version = "0.33", default-features = false, features = ["system", "component"] }
 
 # NVIDIA GPU temperature via NVML
 nvml-wrapper = "0.10"

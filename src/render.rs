@@ -2,11 +2,19 @@ use ab_glyph::{ point, Font, FontRef, PxScale, ScaleFont };
 use ksni::Icon;
 use crate::config::config;
 
+use std::sync::OnceLock;
+
+fn font() -> &'static FontRef<'static> {
+    static FONT: OnceLock<FontRef<'static>> = OnceLock::new();
+    FONT.get_or_init(|| {
+        FontRef::try_from_slice(include_bytes!("../assets/DejaVuSans.ttf"))
+            .expect("bundled font should be valid")
+    })
+}
+
 pub fn render_icon(text: &str, rgb: (u8, u8, u8)) -> Icon {
     // load font from assets
-    let font = FontRef::try_from_slice(include_bytes!("../assets/DejaVuSans.ttf")).expect(
-        "bundled font should be valid"
-    );
+    let font = font();
     let cfg = config();
 
     let (w, h, font_px) = (cfg.icon_width, cfg.icon_height, cfg.font_px);
