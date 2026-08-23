@@ -152,9 +152,6 @@ A few things remain hardcoded in the source (change them there if needed):
   expose no separate temperature, and Intel utilization/VRAM aren't read at all —
   those require the i915/xe performance counters (PMU), which need elevated
   privileges and are out of scope here.
-- **AMD `Tctl` caveat.** On some Ryzen chips `Tctl` carries a fixed offset above
-  the true die temperature; `Tdie`/`Tccd*` are the exact readings if you want to
-  prefer them.
 - **The panel icon shows a single number.** GNOME renders tray icons as a square
   via `St.Icon`, so a wider multi-value readout isn't possible through this path;
   the CPU temp is the headline and everything else lives in the menu.
