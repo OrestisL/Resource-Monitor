@@ -9,9 +9,21 @@ use ksni::blocking::TrayMethods;
 
 use crate::tray::ResourceMonitor;
 use crate::config::config;
-/// How often to refresh, in seconds.
+
+// ensure single instance 
+use single_instance::SingleInstance;
 
 fn main() {
+
+    // create single instance
+    let instance = SingleInstance::new("resource-monitor")
+           .expect("failed to init single-instance guard");
+    // if an instance exists, exit
+    if !instance.is_single()
+    {
+        eprintln!("another instance is already running; exiting");
+        return;
+    }
     let mut metrics = Metrics::new();
     let interval = config().interval_secs;
 
