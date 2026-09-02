@@ -51,7 +51,7 @@ directly to a bitmap with `ab_glyph`.
 
 ## Building
 
-Then build a release binary:
+Clone the repo, then build a release binary:
 
 ```sh
 cargo build --release
